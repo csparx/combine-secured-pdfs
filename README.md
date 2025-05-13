@@ -69,18 +69,17 @@ Deploying to Azure App Service
     ```bash
     az webapp config appsettings set --name combine-files-app --resource-group <resource-group> --settings PDF_PASSWORD=your_secure_password
 
-##Testing
+## Testing
 1. Run the application locally and test with various file types and sizes.
 2. Ensure the combined PDF is generated correctly and is password-protected.
 3. Verify that the application handles invalid files gracefully.
 
-##Troubleshooting
+## Troubleshooting
 Common Issues
-File Size Exceeds Limit: Ensure the total file size does not exceed 100 MB. You can adjust this limit in app.py:
-• File Size Exceeds Limit: Ensure the total file size does not exceed 100 MB. You can adjust this limit in app.py:
+1. File Size Exceeds Limit: Ensure the total file size does not exceed 100 MB. You can adjust this limit in app.py:
     ```bash
     app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB
-• Access Denied (403): Ensure the app is running on 0.0.0.0 for external access:
+2. Access Denied (403): Ensure the app is running on 0.0.0.0 for external access:
     ```bash
     app.run(debug=True, host='0.0.0.0', port=5000)
 
