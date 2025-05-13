@@ -40,14 +40,14 @@ Before running the application, ensure you have the following installed:
     pip install -r requirements.txt
     
 ## Configuration
-To set the password for the combined PDF, create a .env file in the root of the project with the following content:
+1. To set the password for the combined PDF, create a .env file in the root of the project with the following content:
     ```bash
     PDF_PASSWORD=your_secure_password
 
 Alternatively, you can set the PDF_PASSWORD environment variable directly in your system.
 
 ## Usage
-Start the Flask application:
+1. Start the Flask application:
     ```bash
     python app.py
 
