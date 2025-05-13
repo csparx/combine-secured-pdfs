@@ -40,14 +40,15 @@ Before running the application, ensure you have the following installed:
     
 ## Configuration
 To set the password for the combined PDF, create a .env file in the root of the project with the following content:
-
-PDF_PASSWORD=your_secure_password
+    ```bash
+    PDF_PASSWORD=your_secure_password
 
 Alternatively, you can set the PDF_PASSWORD environment variable directly in your system.
 
 ## Usage
 Start the Flask application:
-python app.py
+    ```bash
+    python app.py
 
 Open your browser and navigate to:
 http://127.0.0.1:5000
@@ -58,11 +59,14 @@ Upload your files, and the application will process them into a single password-
 Deploying to Azure App Service
 1. Install the Azure CLI: Azure CLI Installation Guide
 2. Log in to Azure:
-az login
+    ```bash
+    az login
 3. Create an Azure App Service and deploy the application:
-az webapp up --name combine-files-app --resource-group <resource-group> --runtime "PYTHON:3.8"
+    ```bash
+    az webapp up --name combine-files-app --resource-group <resource-group> --runtime "PYTHON:3.8"
 4. Set the PDF_PASSWORD environment variable in Azure:
-az webapp config appsettings set --name combine-files-app --resource-group <resource-group> --settings PDF_PASSWORD=your_secure_password
+    ```bash
+    az webapp config appsettings set --name combine-files-app --resource-group <resource-group> --settings PDF_PASSWORD=your_secure_password
 
 ##Testing
 1. Run the application locally and test with various file types and sizes.
@@ -73,8 +77,10 @@ az webapp config appsettings set --name combine-files-app --resource-group <reso
 Common Issues
 File Size Exceeds Limit: Ensure the total file size does not exceed 100 MB. You can adjust this limit in app.py:
 • File Size Exceeds Limit: Ensure the total file size does not exceed 100 MB. You can adjust this limit in app.py:
+    ```bash
     app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB
 • Access Denied (403): Ensure the app is running on 0.0.0.0 for external access:
+    ```bash
     app.run(debug=True, host='0.0.0.0', port=5000)
 
 ## Contributing
