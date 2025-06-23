@@ -114,7 +114,7 @@ def upload_files():
     print("FILES KEYS:", request.files.keys())
     sys.stdout.flush()
 
-    files = request.files.getlist('pdf_files')
+    files = request.files.getlist('files')
     password = request.form.get('pdf_password') or os.environ.get('PDF_PASSWORD', 'default_password')
     pdf_paths = []
 
@@ -164,4 +164,4 @@ def internal_server_error(error):
 if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 8000))
-    app.run(debug=True, host='127.0.0.1', port=port)
+    app.run(debug=True, host='0.0.0.0', port=port)
