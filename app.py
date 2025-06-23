@@ -9,6 +9,9 @@ import pandas as pd
 from reportlab.pdfgen import canvas
 import logging
 from reportlab.lib.utils import simpleSplit
+from flask_cors import CORS
+CORS(app)
+
 
 from dotenv import load_dotenv
 
