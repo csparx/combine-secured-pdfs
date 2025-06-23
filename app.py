@@ -112,6 +112,7 @@ def index():
 def upload_files():
     print("FILES RECEIVED:", request.files)
     print("FILES KEYS:", request.files.keys())
+    sys.stdout.flush()
 
     files = request.files.getlist('pdf_files')
     password = request.form.get('pdf_password') or os.environ.get('PDF_PASSWORD', 'default_password')
