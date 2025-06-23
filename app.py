@@ -110,7 +110,7 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload_files():
-    files = request.files.getlist('files')
+    files = request.files.getlist('pdf_files[]')
     password = request.form.get('pdf_password') or os.environ.get('PDF_PASSWORD', 'default_password')
     pdf_paths = []
 
