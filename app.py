@@ -110,6 +110,9 @@ def index():
 
 @app.route('/upload', methods=['POST'])
 def upload_files():
+    print("FILES RECEIVED:", request.files)
+    print("FILES KEYS:", request.files.keys())
+
     files = request.files.getlist('pdf_files[]')
     password = request.form.get('pdf_password') or os.environ.get('PDF_PASSWORD', 'default_password')
     pdf_paths = []
@@ -133,7 +136,7 @@ def upload_files():
             pdf_paths.append(pdf_path)
 
     if not pdf_paths:
-        return "Error: No valid files to process.", 400
+        return f"Error: No valid files to process. Received: {[f.filename for f in files]}", 400
 
     output_pdf = os.path.join(app.config['PROCESSED_FOLDER'], 'combined.pdf')
     merge_pdfs(pdf_paths, output_pdf, password)
