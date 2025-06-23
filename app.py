@@ -81,8 +81,6 @@ def convert_to_pdf(filepath):
 
 def merge_pdfs(pdf_paths, output_path, password=None):
     """Merge PDFs and add a password."""
-    if password is None:
-        password = os.environ.get('PDF_PASSWORD', 'default_password')  # Default password if not set
 
     merger = PdfMerger()
     for pdf in pdf_paths:
@@ -113,7 +111,7 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_files():
     files = request.files.getlist('files')
-    password = os.environ.get('PDF_PASSWORD', 'default_password')  # Retrieve password from environment variable
+    password = request.form.get('pdf_password') or os.environ.get('PDF_PASSWORD', 'default_password')
     pdf_paths = []
 
     for file in files:
