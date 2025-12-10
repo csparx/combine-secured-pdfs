@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combine Files</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 400px;
+            border-top: 5px solid #bc2026;
+        }
+
+        h1 {
+            color: #bc2026;
+            font-size: 22px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: black;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #f9f9f9;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="file"]:hover {
+            background: #f1f1f1;
+        }
+
+        button {
+            background: #bc2026;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            font-weight: bold;
+            margin-top: 15px;
+            position: relative;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .spinner {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #bc2026;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        button.loading .spinner {
+            display: block;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Files to Combine</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data" onsubmit="handleSubmit(event)">
+            <label for="files">Select files:</label>
+            <input type="file" name="files" id="files" multiple required>
+            <button type="submit" id="submit-button">
+                <span>Upload and Combine</span>
+                <div class="spinner"></div>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            const button = document.getElementById('submit-button');
+            button.disabled = true; // Disable the button
+            button.classList.add('loading'); // Add loading class
+        }
+    </script>
+</body>
+</html>
