@@ -75,3 +75,5 @@ Werkzeug==3.0.3
 xlrd==2.0.1
 youtube-dl==2021.12.17
 yt-dlp==2024.12.13
+Flask-Cors==4.0.0
+python-dotenv==1.0.0
